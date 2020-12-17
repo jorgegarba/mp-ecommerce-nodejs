@@ -32,6 +32,7 @@ app.get('/detail', function (req, res) {
 
 app.post('/notificaciones', function (req, res) {
     console.log(req.body);
+    console.log(req.query); 
     res.status(200).send("Ok")
 });
 
