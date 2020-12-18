@@ -32,6 +32,7 @@ app.get('/detail', function (req, res) {
 
 app.post('/notificaciones', function (req, res) {
     console.log("////NOTIFICACIONES////".underline.yellow);
+    console.log(req);
     console.log(req.body);
     console.log(req.query);
     console.log("////FIN NOTIFICACIONES////".underline.yellow);
