@@ -87,7 +87,7 @@ const back_urls = {
 
 btnPagar.onclick = e => {
   postCheckoutPreferences([objProducto], payer, payment_methods, back_urls).then(data => {
-    return;
+    // return;
     console.log(data);
     window.location.href = data.init_point;
   })
