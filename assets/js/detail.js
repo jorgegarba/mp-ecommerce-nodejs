@@ -18,6 +18,15 @@ const postCheckoutPreferences = async (items = [], payer, payment_methods, back_
       notification_url: `${window.location.origin}/notificaciones`
     })
   });
+  console.log({
+    items,
+    payer,
+    payment_methods,
+    back_urls,
+    auto_return: "approved",
+    external_reference: "jorgegarba@gmail.com",
+    notification_url: `${window.location.origin}/notificaciones`
+  });
   const data = await peticion.json();
   return data;
 }
@@ -63,7 +72,7 @@ const payment_methods = {
   ],
   excluded_payment_types: [
     {
-      id: "pagoefectivo_atm"
+      id: "atm"
     }
   ]
 }
@@ -78,6 +87,7 @@ const back_urls = {
 
 btnPagar.onclick = e => {
   postCheckoutPreferences([objProducto], payer, payment_methods, back_urls).then(data => {
+    return;
     console.log(data);
     window.location.href = data.init_point;
   })

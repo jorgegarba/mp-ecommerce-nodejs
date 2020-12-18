@@ -1,5 +1,5 @@
 var express = require('express');
-
+var colors = require("colors");
 var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000
 
@@ -31,8 +31,10 @@ app.get('/detail', function (req, res) {
 });
 
 app.post('/notificaciones', function (req, res) {
+    console.log("////NOTIFICACIONES////".underline.yellow);
     console.log(req.body);
-    console.log(req.query); 
+    console.log(req.query);
+    console.log("////FIN NOTIFICACIONES////".underline.yellow);
     res.status(200).send("Ok")
 });
 
