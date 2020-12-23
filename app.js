@@ -1,12 +1,21 @@
 var express = require('express');
 var colors = require("colors");
 var exphbs = require('express-handlebars');
+var bodyParser = require("body-parser");
 var port = process.env.PORT || 3000
-
 var app = express();
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+    next();
+});
 
 app.use(express.static('assets'));
 
